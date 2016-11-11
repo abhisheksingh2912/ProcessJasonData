@@ -1,0 +1,10 @@
+D:\TestProject\ProcessJasonData\TestProcessJasonData\obj\Debug\TestProcessJasonData.csprojResolveAssemblyReference.cache
+D:\TestProject\ProcessJasonData\TestProcessJasonData\bin\Debug\TestProcessJasonData.dll
+D:\TestProject\ProcessJasonData\TestProcessJasonData\bin\Debug\TestProcessJasonData.pdb
+D:\TestProject\ProcessJasonData\TestProcessJasonData\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+D:\TestProject\ProcessJasonData\TestProcessJasonData\bin\Debug\ProcessJasonData.exe
+D:\TestProject\ProcessJasonData\TestProcessJasonData\bin\Debug\Newtonsoft.Json.dll
+D:\TestProject\ProcessJasonData\TestProcessJasonData\bin\Debug\ProcessJasonData.pdb
+D:\TestProject\ProcessJasonData\TestProcessJasonData\bin\Debug\Newtonsoft.Json.xml
+D:\TestProject\ProcessJasonData\TestProcessJasonData\obj\Debug\TestProcessJasonData.dll
+D:\TestProject\ProcessJasonData\TestProcessJasonData\obj\Debug\TestProcessJasonData.pdb

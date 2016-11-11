@@ -1,0 +1,39 @@
+﻿<Window x:Class="ProcessJasonData.View.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProcessJasonData.View"
+        mc:Ignorable="d" WindowState="Maximized" ResizeMode="NoResize"
+        Title="MainWindow">
+    <Grid x:Name="mainGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="1" >
+            <Button Padding="5,5,5,5" Content="Load Jason Data" Command="{Binding LoadCommand}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        </StackPanel>
+        <DataGrid Grid.Row="2" ItemsSource="{Binding JasonDataCollection}" AutoGenerateColumns="False" SelectedItem="{Binding SelectedItem}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="UserID"  Binding="{Binding UserID}"  />
+                <DataGridTextColumn Header="ID" Binding="{Binding ID}"  />
+                <DataGridTextColumn Header="Title" Binding="{Binding Title}" Width="*"  />                
+            </DataGrid.Columns>
+            <DataGrid.RowDetailsTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="30"/>
+                        </Grid.RowDefinitions>
+                        <TextBox IsReadOnly="True" Grid.Row="0" Text="{Binding Body}"/>
+                        <Button Content="Copy plain Text" Grid.Row="1" Width="100" Height="25" HorizontalAlignment="Center" 
+                                Command="{Binding DataContext.CopyPlainTextCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}} }"/>
+                    </Grid>
+                </DataTemplate>
+            </DataGrid.RowDetailsTemplate>
+        </DataGrid>
+    </Grid>
+</Window>
