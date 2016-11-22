@@ -3,7 +3,6 @@ using ProcessJasonData.Model;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Threading.Tasks;
-using System.Windows;
 
 
 namespace ProcessJasonData.ViewModel
@@ -44,9 +43,10 @@ namespace ProcessJasonData.ViewModel
 
         private void CopyPlainTextToClipboard()
         {
+            ITextManipulator obj = GetTextManipulator(TextManipulationOptions.PlainText);
             if (SelectedItem != null)
             {
-                Clipboard.SetText(SelectedItem.Body);
+                obj.CopyToClipBoard(SelectedItem);
             }
         }
 
@@ -116,6 +116,24 @@ namespace ProcessJasonData.ViewModel
         {
             get { return _copyPlainTextCommand; }
             set { _copyPlainTextCommand = value; }
+        }
+
+        private ITextManipulator GetTextManipulator(TextManipulationOptions op)
+        {
+            ITextManipulator obj;
+            switch(op)
+            {
+                case TextManipulationOptions.PlainText: obj = new PlainTextManipulator();
+                    break;
+                case TextManipulationOptions.HTMLText: obj = new HTMLTextManipulator();
+                    break;
+                case TextManipulationOptions.XMLText: obj = new XMLTextManipulator();
+                    break;
+                default:
+                    obj = new PlainTextManipulator();
+                    break;
+            }
+            return obj;
         }
 
         #region PropertyChanged

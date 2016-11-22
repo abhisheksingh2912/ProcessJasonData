@@ -70,8 +70,13 @@
     </Compile>
     <Compile Include="Common\DataController.cs" />
     <Compile Include="Common\DelegateCommand.cs" />
+    <Compile Include="Common\HTMLTextManipulator.cs" />
     <Compile Include="Common\IConfigurationManager.cs" />
+    <Compile Include="Common\ITextManipulator.cs" />
     <Compile Include="Common\JasonConfigurationManager.cs" />
+    <Compile Include="Common\PlainTextManipulator.cs" />
+    <Compile Include="Common\TextManipulationOptions.cs" />
+    <Compile Include="Common\XMLTextManipulator.cs" />
     <Compile Include="Model\JasonData.cs" />
     <Compile Include="ViewModel\JasonDataViewModel.cs" />
     <Compile Include="View\MainWindow.xaml.cs">
