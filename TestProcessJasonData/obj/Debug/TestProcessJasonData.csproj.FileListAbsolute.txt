@@ -8,3 +8,7 @@ D:\TestProject\ProcessJasonData\TestProcessJasonData\bin\Debug\ProcessJasonData.
 D:\TestProject\ProcessJasonData\TestProcessJasonData\bin\Debug\Newtonsoft.Json.xml
 D:\TestProject\ProcessJasonData\TestProcessJasonData\obj\Debug\TestProcessJasonData.dll
 D:\TestProject\ProcessJasonData\TestProcessJasonData\obj\Debug\TestProcessJasonData.pdb
+D:\TestProject\ProcessJasonData\TestProcessJasonData\bin\Debug\Castle.Core.dll
+D:\TestProject\ProcessJasonData\TestProcessJasonData\bin\Debug\Moq.dll
+D:\TestProject\ProcessJasonData\TestProcessJasonData\bin\Debug\Castle.Core.xml
+D:\TestProject\ProcessJasonData\TestProcessJasonData\bin\Debug\Moq.xml

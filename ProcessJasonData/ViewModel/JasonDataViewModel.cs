@@ -1,16 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using ProcessJasonData.Common;
+using ProcessJasonData.Model;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using System.Net;
-using Newtonsoft.Json;
-using System.Runtime.Serialization.Json;
-using ProcessJasonData.Model;
-using ProcessJasonData.Common;
-using System.Windows.Threading;
 using System.Windows;
 
 
@@ -18,14 +10,31 @@ namespace ProcessJasonData.ViewModel
 {
     public class JasonDataViewModel : INotifyPropertyChanged
     {
+        private string _jasonDataPath;
         private ObservableCollection<JasonData> _jasonDataCollection;
         private JasonData _selectedItem;
+        private DataController _dataController;
+        private IConfigurationManager _configManager;
+
+        public IConfigurationManager ConfigManager
+        {
+            get
+            {
+                return _configManager;
+            }
+            set
+            {
+                _configManager = value;
+            }
+        }
 
         public JasonDataViewModel()
         {
+            _configManager = new JasonConfigurationManager();            
             _jasonDataCollection = new ObservableCollection<Model.JasonData>();
             _loadCommand = new DelegateCommand(LoadJasonData, CanLoadJasonData);
             _copyPlainTextCommand = new DelegateCommand(CopyPlainTextToClipboard, CanCopyPlainTextToClipboard);
+            _dataController = new DataController();
         }
 
         private bool CanCopyPlainTextToClipboard()
@@ -61,26 +70,10 @@ namespace ProcessJasonData.ViewModel
         private void LoadJasonData()
         {
             var json_data = string.Empty;
-            JasonData[] data = null;
-            using (var webClient = new WebClient())
-            {
-                try
-                {
-                    json_data = webClient.DownloadString("http://jsonplaceholder.typicode.com/posts");
-                    //json_data = webClient.DownloadString(@"D:\JasonData.txt");
-
-                    Task t1 = new Task(() =>
-                    {
-                        data = JsonConvert.DeserializeObject<JasonData[]>(json_data);
-                    });
-
-                    t1.Start();
-                    t1.ContinueWith(Task => LoadData(data), TaskScheduler.FromCurrentSynchronizationContext());
-                }
-                catch (Exception e)
-                {
-                }
-            }            
+            _jasonDataPath = _configManager.GetAppSetting("JasonDataPath");
+            Task<JasonData[]> t1 = new Task<JasonData[]>(()=> _dataController.DownloadAndProcessdata(_jasonDataPath));
+            t1.Start();
+            t1.ContinueWith(Task => LoadData(t1.Result), TaskScheduler.FromCurrentSynchronizationContext());            
         }
 
         public ObservableCollection<JasonData> JasonDataCollection
